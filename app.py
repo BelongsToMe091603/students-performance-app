@@ -9,6 +9,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # model = joblib.load(os.path.join(BASE_DIR, "../venv/model", "rf_model.pkl"))
 model = joblib.load(os.path.join(BASE_DIR, "rf_model.pkl"))
+scaler = joblib.load(os.path.join(BASE_DIR, 'robust_scaler.pkl'))
 
 st.title("🎓 Student Performance Prediction")
 
@@ -121,91 +122,101 @@ st.subheader("📥 Input Data Mahasiswa")
 # =========================
 # DEMOGRAPHIC
 # =========================
-col1, col2 = st.columns(2)
+# col1, col2 = st.columns(2)
 
-with col1:
-    selected_marital = st.selectbox("Marital Status", list(marital_options.keys()))
-    marital_status = marital_options[selected_marital]
+# with col1:
+#     selected_marital = st.selectbox("Marital Status", list(marital_options.keys()))
+#     marital_status = marital_options[selected_marital]
 
-    selected_application = st.selectbox("Application Mode", list(application_options.keys()))
-    application_mode = application_options[selected_application]
+#     selected_application = st.selectbox("Application Mode", list(application_options.keys()))
+#     application_mode = application_options[selected_application]
 
-    application_order = st.slider("Application Order", 0, 9)
+#     application_order = st.slider("Application Order", 0, 9)
 
-    selected_course = st.selectbox("Course", list(course_options.keys()))
-    course = course_options[selected_course]
+#     selected_course = st.selectbox("Course", list(course_options.keys()))
+#     course = course_options[selected_course]
 
-    attendance = attendance_map[st.selectbox("Attendance", attendance_map.keys())]
+#     attendance = attendance_map[st.selectbox("Attendance", attendance_map.keys())]
 
-    selected_prev_qualification = st.selectbox("Previous Qualification", list(previous_qualification_options.keys()))
-    previous_qualification = previous_qualification_options[selected_prev_qualification]
+#     selected_prev_qualification = st.selectbox("Previous Qualification", list(previous_qualification_options.keys()))
+#     previous_qualification = previous_qualification_options[selected_prev_qualification]
 
-    prev_grade = st.slider("Previous Qualification Grade", 0, 200)
+#     prev_grade = st.slider("Previous Qualification Grade", 0, 200)
 
-    gender = gender_map[st.selectbox("Gender", gender_map.keys())]
-    scholarship = scholarship_map[st.selectbox("Scholarship Holder", scholarship_map.keys())]
-    age = st.number_input("Age at Enrollment", 15, 70)
-    international = inter_map[st.selectbox("International Student", inter_map.keys())]
+#     gender = gender_map[st.selectbox("Gender", gender_map.keys())]
+#     scholarship = scholarship_map[st.selectbox("Scholarship Holder", scholarship_map.keys())]
+#     age = st.number_input("Age at Enrollment", 15, 70)
+#     international = inter_map[st.selectbox("International Student", inter_map.keys())]
 
-with col2:
-    selected_nationality = st.selectbox("Nationality", list(nationality_options.keys()))
-    nacionality = nationality_options[selected_nationality]
+# with col2:
+#     selected_nationality = st.selectbox("Nationality", list(nationality_options.keys()))
+#     nacionality = nationality_options[selected_nationality]
 
-    mother_qualification = st.slider("Mother's Qualification", 0, 50)
-    father_qualification = st.slider("Father's Qualification", 0, 50)
+#     mother_qualification = st.slider("Mother's Qualification", 0, 50)
+#     father_qualification = st.slider("Father's Qualification", 0, 50)
 
-    mother_occupation = st.slider("Mother's Occupation", 0, 200)
-    father_occupation = st.slider("Father's Occupation", 0, 200)
+#     mother_occupation = st.slider("Mother's Occupation", 0, 200)
+#     father_occupation = st.slider("Father's Occupation", 0, 200)
 
-    admission_grade = st.slider("Admission Grade", 0, 200)
+#     admission_grade = st.slider("Admission Grade", 0, 200)
 
-    displaced = displaced_map[st.selectbox("Displaced", displaced_map.keys())]
-    education_special_needs = education_special_needs_map[st.selectbox("Education Special Needs", education_special_needs_map.keys())]
+#     displaced = displaced_map[st.selectbox("Displaced", displaced_map.keys())]
+#     education_special_needs = education_special_needs_map[st.selectbox("Education Special Needs", education_special_needs_map.keys())]
 
-    debtor = debtor_map[st.selectbox("Debtor", debtor_map.keys())]
-    tuition_fee = tuition_fee_map[st.selectbox("Tuition Fees Up to Date", tuition_fee_map.keys())]
+#     debtor = debtor_map[st.selectbox("Debtor", debtor_map.keys())]
+#     tuition_fee = tuition_fee_map[st.selectbox("Tuition Fees Up to Date", tuition_fee_map.keys())]
 
 # =========================
 # SEMESTER 1
 # =========================
-st.subheader("Semester 1")
-col3, col4 = st.columns(2)
+# st.subheader("Semester 1")
+# col3, col4 = st.columns(2)
 
-with col3:
-    curricular_units_1st_sem_credit = st.slider("1st Sem Credited", 0, 20)
-    curricular_units_1st_sem_enrolled = st.slider("1st Sem Enrolled", 0, 26)
-    curricular_units_1st_sem_evaluations = st.slider("1st Sem Evaluations", 0, 45)
+# with col3:
+#     curricular_units_1st_sem_credit = st.slider("1st Sem Credited", 0, 20)
+#     curricular_units_1st_sem_enrolled = st.slider("1st Sem Enrolled", 0, 26)
+#     curricular_units_1st_sem_evaluations = st.slider("1st Sem Evaluations", 0, 45)
 
-with col4:
-    curricular_units_1st_sem_approved = st.slider("1st Sem Approved", 0, 26)
-    curricular_units_1st_sem_grade = st.slider("1st Sem Grade", 0, 20)
-    curricular_units_1st_sem_without_evaluations = st.slider("1nd Sem Without Evaluations", 0, 12)
+# with col4:
+#     curricular_units_1st_sem_approved = st.slider("1st Sem Approved", 0, 26)
+#     curricular_units_1st_sem_grade = st.slider("1st Sem Grade", 0, 20)
+#     curricular_units_1st_sem_without_evaluations = st.slider("1nd Sem Without Evaluations", 0, 12)
 
 # =========================
 # SEMESTER 2
 # =========================
-st.subheader("Semester 2")
+# st.subheader("Semester 2")
 
-col5, col6 = st.columns(2)
+# col5, col6 = st.columns(2)
 
-with col5:
-    curricular_units_2st_sem_credit = st.slider("2nd Sem Credited", 0, 20)
-    curricular_units_2st_sem_enrolled = st.slider("2nd Sem Enrolled", 0, 26)
-    curricular_units_2st_sem_evaluations = st.slider("2nd Sem Evaluations", 0, 45)
+# with col5:
+#     curricular_units_2st_sem_credit = st.slider("2nd Sem Credited", 0, 20)
+#     curricular_units_2st_sem_enrolled = st.slider("2nd Sem Enrolled", 0, 26)
+#     curricular_units_2st_sem_evaluations = st.slider("2nd Sem Evaluations", 0, 45)
 
-with col6:
-    curricular_units_2st_sem_approved = st.slider("2nd Sem Approved", 0, 26)
-    curricular_units_2st_sem_grade = st.slider("2nd Sem Grade", 0, 20)
-    curricular_units_2st_sem_without_evaluations = st.slider("2nd Sem Without Evaluations", 0, 12)
+# with col6:
+#     curricular_units_2st_sem_approved = st.slider("2nd Sem Approved", 0, 26)
+#     curricular_units_2st_sem_grade = st.slider("2nd Sem Grade", 0, 20)
+#     curricular_units_2st_sem_without_evaluations = st.slider("2nd Sem Without Evaluations", 0, 12)
 
 # =========================
 # ECONOMIC
 # =========================
-st.subheader("Economic Factors")
+# st.subheader("Economic Factors")
 
-unemployment = st.slider("Unemployment Rate (%)", 0.0, 20.0)
-inflation = st.slider("Inflation Rate (%)", 0.0, 20.0)
-gdp = st.number_input("GDP", 0.0)
+# unemployment = st.slider("Unemployment Rate (%)", 0.0, 20.0)
+# inflation = st.slider("Inflation Rate (%)", 0.0, 20.0)
+# gdp = st.number_input("GDP", 0.0)
+
+
+# =============================================================================================
+curricular_units_2st_sem_approved = st.slider("2nd Sem Approved", 0, 26)
+curricular_units_2st_sem_grade = st.slider("2nd Sem Grade", 0, 20)
+curricular_units_1st_sem_approved = st.slider("1st Sem Approved", 0, 26)
+curricular_units_1st_sem_grade = st.slider("1st Sem Grade", 0, 20)
+tuition_fee = tuition_fee_map[st.selectbox("Tuition Fees Up to Date", tuition_fee_map.keys())]
+
+# ===============================================================================================
 
 # =========================
 # PREDICT BUTTON
@@ -213,29 +224,40 @@ gdp = st.number_input("GDP", 0.0)
 if st.button("🎯 Predict"):
 
     input_data = np.array([[ 
-        marital_status, application_mode, application_order, course, attendance,
-        previous_qualification, prev_grade, nacionality, mother_qualification,
-        father_qualification, mother_occupation, father_occupation, admission_grade,
-        displaced, education_special_needs, debtor, tuition_fee, gender,
-        scholarship, age, international,
-        curricular_units_1st_sem_credit, curricular_units_1st_sem_enrolled,
-        curricular_units_1st_sem_evaluations, curricular_units_1st_sem_approved,
+        # marital_status, application_mode, application_order, course, attendance,
+        # previous_qualification, prev_grade, nacionality, mother_qualification,
+        # father_qualification, mother_occupation, father_occupation, admission_grade,
+        # displaced, education_special_needs, debtor, 
+        # gender,
+        # scholarship, age, international,
+        # curricular_units_1st_sem_credit, curricular_units_1st_sem_enrolled,
+        # curricular_units_1st_sem_evaluations, 
+        # curricular_units_1st_sem_without_evaluations,
+        # curricular_units_2st_sem_credit, curricular_units_2st_sem_enrolled,
+        # curricular_units_2st_sem_evaluations, 
+        curricular_units_2st_sem_approved,
+        curricular_units_1st_sem_approved,
+        curricular_units_2st_sem_grade, 
+        tuition_fee, 
         curricular_units_1st_sem_grade, 
-        curricular_units_1st_sem_without_evaluations,
-        curricular_units_2st_sem_credit, curricular_units_2st_sem_enrolled,
-        curricular_units_2st_sem_evaluations, curricular_units_2st_sem_approved,
-        curricular_units_2st_sem_grade, curricular_units_2st_sem_without_evaluations,
-        unemployment, inflation, gdp
+        # curricular_units_2st_sem_without_evaluations,
+        # unemployment, inflation, gdp
     ]])
 
-    result = model.predict(input_data)
+    # Transform dulu dengan scaler yang sama saat training
+    input_scaled = scaler.transform(input_data)  # ← Tambahkan ini
+
+    result = model.predict(input_scaled)
+    print(result)
 
     st.subheader("📊 Prediction Result")
+    
+    label = result[0]
 
-    label = result
-    if label == "Graduate":
+    label_map = {0: "Dropout", 1: "Graduate"}  # Sesuaikan mapping-nya
+    label_name = label_map.get(label, "Unknown")
+
+    if label_name == "Graduate":
         st.success("🎓 Graduate")
-    elif label == "Enrolled":
-        st.info("📘 Enrolled")
     else:
         st.error("⚠️ Dropout")

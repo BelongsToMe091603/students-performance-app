@@ -80,11 +80,16 @@ pip freeze > requirements.txt
 
 ## Business Dashboard
 
-Dashboard Students Performance memberikan gambaran menyeluruh mengenai kondisi akademik mahasiswa serta tingkat risiko dropout di institusi. Dari total 4.424 mahasiswa, sekitar 49,93% berhasil lulus, sementara 32,12% mengalami dropout, yang menunjukkan bahwa hampir sepertiga mahasiswa tidak menyelesaikan studinya. Selain itu, terdapat 1.621 mahasiswa yang teridentifikasi sebagai at-risk students, sehingga menjadi fokus utama untuk dilakukan intervensi lebih lanjut. Meskipun rata-rata GPA berada di angka 3,15 yang tergolong baik, tingginya angka dropout mengindikasikan bahwa faktor penyebab tidak hanya berasal dari performa akademik, tetapi juga kemungkinan dipengaruhi oleh faktor lain seperti kondisi finansial atau sosial.
+Dashboard ini menampilkan ringkasan performa akademik dari total 3.630 mahasiswa. Secara keseluruhan, tingkat kelulusan (Graduate Rate) cukup baik yaitu 60,85%, sementara tingkat dropout berada di angka 39,15% dengan jumlah mahasiswa berisiko (At-Risk Students) sebanyak 1.341 orang. Rata-rata GPA seluruh mahasiswa adalah 3,11, yang menunjukkan performa akademik yang cukup solid secara keseluruhan.
 
-Distribusi status mahasiswa memperlihatkan bahwa proporsi dropout cukup signifikan dibandingkan mahasiswa yang masih terdaftar. Berdasarkan gender, baik mahasiswa laki-laki maupun perempuan menunjukkan pola dropout yang relatif seimbang, sehingga gender bukan menjadi faktor utama. Sementara itu, dari sisi status pernikahan, mayoritas dropout berasal dari mahasiswa dengan status single, yang sejalan dengan dominasi populasi mahasiswa secara umum. Analisis lebih lanjut pada tingkat program studi menunjukkan bahwa beberapa jurusan seperti Management, Nursing, dan Journalism memiliki angka dropout yang lebih tinggi dibandingkan jurusan lainnya, sehingga perlu perhatian khusus dari institusi.
+Dari sisi distribusi status mahasiswa, diagram donat menunjukkan bahwa mayoritas mahasiswa berhasil lulus (60,9%) dibandingkan yang dropout (39,1%). Jika dilihat berdasarkan gender, jumlah mahasiswa perempuan lebih banyak daripada laki-laki, namun keduanya sama-sama memiliki proporsi dropout yang cukup signifikan, ditandai dengan bar merah pada grafik batang gender.
 
-Di sisi lain, distribusi GPA menunjukkan bahwa sebagian besar mahasiswa berada pada kategori nilai tinggi (3–4), yang memperkuat indikasi bahwa dropout tidak selalu terjadi pada mahasiswa dengan performa akademik rendah. Hal ini menegaskan pentingnya pendekatan yang lebih komprehensif dalam menangani permasalahan dropout.
+Dari sisi status pernikahan, mahasiswa dengan status Single mendominasi jumlah dropout secara absolut dibandingkan kategori lainnya seperti Married, Divorced, atau Facto Union. Hal ini kemungkinan berkaitan dengan usia mahasiswa yang mayoritas masih muda dan belum menikah saat berkuliah.
+
+Pada grafik Dropout by Course, jurusan Management (dua varian) dan Nursing mencatat angka dropout tertinggi, masing-masing di atas 100 mahasiswa. Sebaliknya, jurusan seperti Biofuel Production mencatat dropout paling rendah, kemungkinan karena jumlah mahasiswanya yang memang sedikit.
+
+Terakhir, grafik Total Students by GPA Category menunjukkan bahwa sebagian besar mahasiswa berada di rentang GPA 3–4, yang merupakan kategori tertinggi. Namun terdapat juga kelompok mahasiswa dengan GPA 0–1 dalam jumlah yang cukup besar, yang berpotensi menjadi kelompok paling rentan untuk dropout dan perlu mendapat perhatian lebih dari institusi.
+
 
 🌐 Akses Dashboard
 https://datastudio.google.com/reporting/34be5c92-8176-4101-9d00-3a72be739959
@@ -106,20 +111,24 @@ https://studentsperformance-app.streamlit.app/
 
 ## Conclusion
 
-Kesimpulan dari proyek Students Performance di Jaya Jaya Institut menunjukkan bahwa permasalahan tingginya angka dropout merupakan isu yang signifikan dan memerlukan penanganan berbasis data. Dari hasil analisis dan visualisasi dashboard, diketahui bahwa sekitar sepertiga mahasiswa tidak berhasil menyelesaikan studinya, meskipun secara umum rata-rata performa akademik tergolong baik. Hal ini menegaskan bahwa faktor penyebab dropout tidak hanya dipengaruhi oleh nilai akademik, tetapi juga melibatkan aspek lain seperti kondisi finansial, beban studi, serta karakteristik individu mahasiswa.
+Proyek analisis Students Performance di Jaya Jaya Institut berhasil mengidentifikasi faktor-faktor utama yang mempengaruhi kelulusan dan dropout mahasiswa. Dari total 3.630 mahasiswa, tingkat dropout mencapai 39,15% — angka yang cukup tinggi dan memerlukan perhatian serius dari institusi.
 
-Melalui proses analisis data dan pemodelan machine learning, proyek ini berhasil mengidentifikasi pola serta faktor-faktor yang berkontribusi terhadap risiko dropout, seperti jumlah mata kuliah yang tidak lulus, performa di semester awal, dan kemungkinan kendala ekonomi. Selain itu, ditemukan bahwa beberapa program studi memiliki tingkat dropout yang lebih tinggi dibandingkan yang lain, sehingga membutuhkan perhatian khusus. Model yang dibangun juga mampu mengklasifikasikan mahasiswa ke dalam kategori dropout, enrolled, dan graduate, sehingga dapat digunakan sebagai dasar dalam pengambilan keputusan.
+Melalui analisis korelasi dan pemodelan machine learning menggunakan Random Forest, ditemukan bahwa lima fitur paling berpengaruh terhadap status mahasiswa adalah jumlah mata kuliah yang lulus di semester 1 dan 2, nilai akademik di kedua semester, serta status pembayaran uang kuliah. Hal ini menunjukkan bahwa performa akademik sejak semester awal dan kondisi finansial mahasiswa merupakan indikator paling kritis dalam menentukan apakah seorang mahasiswa akan lulus atau dropout.
 
-Secara keseluruhan, proyek ini memberikan nilai tambah bagi institusi dengan menyediakan sistem prediksi dini (early warning system) untuk mengidentifikasi mahasiswa yang berisiko dropout. Dengan adanya sistem ini, pihak kampus dapat melakukan intervensi secara lebih cepat dan tepat sasaran, seperti memberikan bimbingan akademik, dukungan finansial, atau pendampingan khusus. Implementasi solusi ini diharapkan dapat menurunkan angka dropout, meningkatkan tingkat kelulusan, serta mendukung pengambilan keputusan yang lebih efektif dan berbasis data di Jaya Jaya Institut.
+Dashboard bisnis yang dibangun memvisualisasikan pola dropout berdasarkan gender, status pernikahan, jurusan, dan kategori GPA, sehingga pihak institusi dapat dengan mudah memantau dan mengidentifikasi kelompok mahasiswa yang berisiko tinggi. Selain itu, aplikasi prediksi berbasis Streamlit turut dikembangkan untuk membantu institusi mendeteksi potensi dropout secara dini berdasarkan data akademik dan finansial mahasiswa.
+
+Secara keseluruhan, proyek ini memberikan insight berbasis data yang dapat dijadikan dasar pengambilan keputusan bagi Jaya Jaya Institut dalam merancang program intervensi yang lebih tepat sasaran guna menekan angka dropout dan meningkatkan tingkat kelulusan mahasiswa.
+
 
 ### Rekomendasi Action Items (Optional)
 
 Berikan beberapa rekomendasi action items yang harus dilakukan guna mengurangi mahasiswa mahasiswa dropout.
 
-- Mahasiswa dengan nilai rendah atau banyak mata kuliah tidak lulus perlu diberikan bimbingan khusus
+- Intervensi Akademik Sejak Dini
+Institusi perlu memantau secara ketat performa mahasiswa pada semester 1 dan 2, karena nilai dan jumlah mata kuliah yang lulus di awal perkuliahan terbukti menjadi indikator paling kritis terhadap risiko dropout. Program bimbingan belajar atau tutoring khusus perlu diberikan kepada mahasiswa yang menunjukkan performa rendah sejak semester pertama sebelum kondisinya semakin memburuk.
+
 - Program remedial atau mentoring akademik harus difokuskan pada semester awal
-- Mengidentifikasi mahasiswa dengan tunggakan lebih awal
+Institusi perlu membentuk membuat program belajar bersama/kelompok supaya mengurangi jumlah angka mahasiswa yang remedial dan tim konselor atau mentor akademik yang secara proaktif mendampingi mahasiswa dengan GPA rendah (kategori 0–1), karena kelompok ini merupakan yang paling rentan mengalami dropout berdasarkan hasil analisis data.
+
 - Memberikan opsi keringanan pembayaran atau beasiswa
-- Lakukan evaluasi pada jurusan dengan tingkat dropout tinggi
-- Tinjau ulang kurikulum dan beban akademik
-- Sesuaikan metode pembelajaran dengan kebutuhan mahasiswa
+Mengingat status pembayaran uang kuliah menjadi salah satu faktor utama dropout, institusi disarankan untuk memperluas akses beasiswa, cicilan uang kuliah, atau program keringanan biaya bagi mahasiswa yang mengalami kesulitan finansial. Identifikasi mahasiswa yang menunggak pembayaran harus dilakukan lebih awal agar bantuan dapat diberikan tepat waktu.
