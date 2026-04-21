@@ -124,11 +124,11 @@ Secara keseluruhan, proyek ini memberikan insight berbasis data yang dapat dijad
 
 Berikan beberapa rekomendasi action items yang harus dilakukan guna mengurangi mahasiswa mahasiswa dropout.
 
-- Intervensi Akademik Sejak Dini
+- **Intervensi Akademik Sejak Dini.**
   Institusi perlu memantau secara ketat performa mahasiswa pada semester 1 dan 2, karena nilai dan jumlah mata kuliah yang lulus di awal perkuliahan terbukti menjadi indikator paling kritis terhadap risiko dropout. Program bimbingan belajar atau tutoring khusus perlu diberikan kepada mahasiswa yang menunjukkan performa rendah sejak semester pertama sebelum kondisinya semakin memburuk.
 
-- Program remedial atau mentoring akademik harus difokuskan pada semester awal
+- **Program remedial atau mentoring akademik harus difokuskan pada semester awal.**
   Institusi perlu membentuk membuat program belajar bersama/kelompok supaya mengurangi jumlah angka mahasiswa yang remedial dan tim konselor atau mentor akademik yang secara proaktif mendampingi mahasiswa dengan GPA rendah (kategori 0–1), karena kelompok ini merupakan yang paling rentan mengalami dropout berdasarkan hasil analisis data.
 
-- Memberikan opsi keringanan pembayaran atau beasiswa
+- **Memberikan opsi keringanan pembayaran atau beasiswa.**
   Mengingat status pembayaran uang kuliah menjadi salah satu faktor utama dropout, institusi disarankan untuk memperluas akses beasiswa, cicilan uang kuliah, atau program keringanan biaya bagi mahasiswa yang mengalami kesulitan finansial. Identifikasi mahasiswa yang menunggak pembayaran harus dilakukan lebih awal agar bantuan dapat diberikan tepat waktu.
